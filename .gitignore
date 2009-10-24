@@ -1,4 +1,7 @@
 *.user
+*.o
+moc_*.*
+MyNote
 Makefile
 Makefile.*
 debug/*.*

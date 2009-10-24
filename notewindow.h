@@ -6,8 +6,14 @@
 class NoteWindow : public QMainWindow
 {
     Q_OBJECT
+
 public:
     NoteWindow(QWidget *parent = 0);
+
+private:
+    void createToolbar();
+
+    QToolBar *toolbar;
 };
 
 #endif // NOTEWINDOW_H

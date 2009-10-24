@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/images" >
+        <file alias="new" >icons/note_new.gif</file>
+        <file alias="delete" >icons/note_delete.gif</file>
+        <file alias="quit" >icons/quit.png</file>
+        <file alias="appIcon" >icons/Blank-Catalog.png</file>
+    </qresource>
+</RCC>
