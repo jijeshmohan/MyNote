@@ -10,8 +10,13 @@ class NoteWindow : public QMainWindow
 public:
     NoteWindow(QWidget *parent = 0);
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private:
     void createToolbar();
+    void readSettings();
+    void writeSettings();
 
     QToolBar *toolbar;
 };

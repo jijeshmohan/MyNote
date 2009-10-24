@@ -4,7 +4,10 @@
 NoteWindow::NoteWindow(QWidget *parent):QMainWindow(parent)
 {
     createToolbar();
+    readSettings();
+
     setWindowIcon(QIcon(":/images/appIcon"));
+    setWindowTitle("My Note");
 }
 
 void NoteWindow::createToolbar()
@@ -32,4 +35,18 @@ void NoteWindow::createToolbar()
     toolbar->addAction(exitAction);
     connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 
+}
+void NoteWindow::readSettings()
+{
+    QSettings settings("OSS", "MyNote");
+    restoreGeometry(settings.value("geometry").toByteArray());
+}
+void NoteWindow::writeSettings()
+{
+    QSettings settings("OSS", "MyNote");
+    settings.setValue("geometry", saveGeometry());
+}
+void NoteWindow::closeEvent(QCloseEvent *event)
+{
+    writeSettings();
 }
