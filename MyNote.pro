@@ -1,4 +1,6 @@
 SOURCES += MyNote.cpp \
-    notewindow.cpp
-HEADERS += notewindow.h
+    notewindow.cpp \
+    notepage.cpp
+HEADERS += notewindow.h \
+    notepage.h
 RESOURCES += MyNote.qrc

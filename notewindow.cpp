@@ -1,15 +1,17 @@
 #include <QtGui>
 #include "notewindow.h"
+#include "notepage.h"
 
 NoteWindow::NoteWindow(QWidget *parent):QMainWindow(parent)
 {
     createToolbar();
     readSettings();
 
+    notepage = new NotePage(this);
+    setCentralWidget(notepage);
     setWindowIcon(QIcon(":/images/appIcon"));
     setWindowTitle("My Note");
 }
-
 void NoteWindow::createToolbar()
 {
     toolbar=addToolBar(tr("MyNote"));

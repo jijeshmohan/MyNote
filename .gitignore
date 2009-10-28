@@ -6,3 +6,4 @@ Makefile
 Makefile.*
 debug/*.*
 release/*.*
+qrc_MyNote.cpp

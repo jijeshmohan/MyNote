@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+class NotePage;
 class NoteWindow : public QMainWindow
 {
     Q_OBJECT
@@ -19,6 +20,8 @@ private:
     void writeSettings();
 
     QToolBar *toolbar;
+    NotePage *notepage;
+
 };
 
 #endif // NOTEWINDOW_H
