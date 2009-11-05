@@ -1,9 +1,12 @@
 #include <QtGui>
 #include "notepage.h"
 
-NotePage::NotePage(QWidget *parent):QWidget(parent)
+NotePage::NotePage(QWidget *parent,QString titleName):QWidget(parent)
 {
     setupUI();
+    setupSignalsAndSlots();
+
+    //set title name
 }
 
 void NotePage::setupUI()
@@ -55,7 +58,7 @@ void NotePage::setupUI()
 
     contentEdit = new QPlainTextEdit(this);
     QFont font1;
-    font1.setFamily(QString::fromUtf8("Nimbus Sans L"));
+    font1.setFamily(QString::fromUtf8("consolas"));
     font1.setPointSize(11);
     contentEdit->setFont(font1);
     contentEdit->setFrameShape(QFrame::NoFrame);
@@ -80,23 +83,35 @@ void NotePage::setupUI()
 void NotePage::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    // painter.setBrush(Qt::white);
     painter.setBrush(QColor(255,255,200));
     painter.drawRect(0,0,this->width(),this->height());
+
     painter.setPen(QColor(255,0,0,128));
     painter.drawLine(50,0,50,this->height());
+
     QFontMetrics fontM(contentEdit->font());
     int lineHeight=fontM.height();
-    // FOR LINUX we have to use Line width
 
 
-    painter.setPen(QColor(153,204,255,128));
+    painter.setPen(QColor(153,204,255,100));
 
     int startheight=20 + titleEdit->height();
-    //    lineHeight += 1;
+
     for(int i=startheight ;i<= this->height();i+=lineHeight)
     {
         painter.drawLine(0,i,this->width(),i);
     }
 
+}
+
+void NotePage::setupSignalsAndSlots()
+{
+    connect(titleEdit,SIGNAL(returnPressed()),this,SLOT(titleChanged()));
+    connect(titleEdit,SIGNAL(lostFocus()),this,SLOT(titleChanged()));
+
+}
+
+void NotePage::titleChanged()
+{
+    //TODO: Implement title change logic
 }
